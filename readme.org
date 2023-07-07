@@ -23,7 +23,7 @@
 *** Installation
   1. Clone the repository
      #+BEGIN_SRC sh
-     git clone <repo_url>
+     git clone https://github.com/xellerix/nasa_notifier.git
      #+END_SRC
 
   2. Install the dependencies using pip
