@@ -1,0 +1,49 @@
+#+title: Readme
+
+* NasaAPI Splunk Integration
+  This Python application collects data from NASA's DONKI API and sends the selected fields of the response to a Splunk HTTP Event Collector (HEC). It maintains a checkpoint of the last processed event and only processes new events from the API. It also manages environment variables such as API key, HEC endpoint, and HEC token using `.env` file and Python's `dotenv` module.
+
+** Getting Started
+  These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
+
+*** Prerequisites
+  1. Python 3.7 or later installed on your system.
+  2. You must have a valid NASA API key. If you don't have one, get it from [[https://api.nasa.gov/][NASA API Website]].
+  3. Access to a Splunk instance with HEC enabled.
+
+*** Project Structure
+  Here's a short description of the important files and directories:
+
+  - `./main.py`: Main file which contains the loop for polling the NASA API and sending events to Splunk.
+  - `./config/api_config.py`: Configuration file for managing the NASA API key.
+  - `./config/hec_config.py`: Configuration file for managing the HEC endpoint and token.
+  - `./src/sessions.py`: Contains functions for managing API sessions and sending data to Splunk.
+  - `./src/checkpoint.py`: Manages saving and loading checkpoint information.
+
+*** Installation
+  1. Clone the repository
+     #+BEGIN_SRC sh
+     git clone <repo_url>
+     #+END_SRC
+
+  2. Install the dependencies using pip
+     #+BEGIN_SRC sh
+     pip install -r requirements.txt
+     #+END_SRC
+
+  3. Create a `.env` file in the root directory and add your NASA API key, HEC endpoint, and HEC token in the following format.
+     #+BEGIN_SRC
+     API_KEY=<Your API key>
+     HEC_ENDPOINT=<Your HEC endpoint>
+     HEC_TOKEN=<Your HEC token>
+     #+END_SRC
+
+*** Usage
+  To start the application, run the `main.py` script.
+  #+BEGIN_SRC sh
+  python3 main.py
+  #+END_SRC
+
+  If the API key, HEC endpoint, or HEC token are not found in the `.env` file, the program will prompt the user to enter them and they will be saved for future sessions.
+
+  The application will poll the NASA API every 5 minutes. For each new event it finds, it will print the selected fields to the console and send the event to the Splunk HEC.

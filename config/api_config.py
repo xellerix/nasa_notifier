@@ -7,7 +7,7 @@ import getpass
 # Load environment variables from .env file
 load_dotenv(find_dotenv())
 
-url = os.getenv('URL')
+url = "https://api.nasa.gov/DONKI/notifications?type=all"
 
 def get_api_key():
     api_key = os.getenv('API_KEY')
