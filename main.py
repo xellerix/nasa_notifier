@@ -3,23 +3,21 @@
 import time
 import json
 from datetime import datetime
-from config.hec_config import url
-from src.api_key import load_api_key, get_api_key
+from config.api_config import get_api_key, url
 from src.checkpoint import load_checkpoint, save_checkpoint
-from src.api import get_authenticated_session, send_to_splunk
+from src.sessions import get_authenticated_session, send_to_splunk
 
 def poll_api():
     checkpoint_id = load_checkpoint()
-    api_key = load_api_key()
+    api_key = get_api_key()
 
-    # If API key is not found, prompt the user to enter it
-    if api_key is None:
-        get_api_key()
-        api_key = load_api_key()
+#    # If API key is not found, prompt the user to enter it
+#    if api_key is None:
+#        get_api_key()
+#        api_key = load_api_key()
 
     session = get_authenticated_session(api_key)
 
-    # for url in ['https://api.nasa.gov/DONKI/notifications?startDate=2023-04-15&endDate=2023-05-31&type=all', 'https://api.nasa.gov/DONKI/notifications?startDate=2023-05-16&endDate=2023-06-15&type=all', 'https://api.nasa.gov/DONKI/notifications?startDate=2023-06-01&endDate=2023-07-01&type=all']:
     while True:
         response = session.get(url)
         data = response.json()
