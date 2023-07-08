@@ -33,7 +33,6 @@ def send_to_splunk(event):
         "event": {
             "message": event["messageBody"],
             },
-        "index": "nasa",
         "fields": {
             "messageType": event["messageType"]
         }
