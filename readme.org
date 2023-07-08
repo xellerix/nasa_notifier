@@ -34,7 +34,7 @@
   3. Create a `.env` file in the root directory and add your NASA API key, HEC endpoint, and HEC token in the following format.
      #+BEGIN_SRC
      API_KEY=<Your API key>
-     HEC_ENDPOINT=<Your HEC endpoint>
+     HEC_ENDPOINT=https://<HEC Server>:<HEC Port>/services/collector
      HEC_TOKEN=<Your HEC token>
      #+END_SRC
 

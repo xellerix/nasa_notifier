@@ -1,0 +1,28 @@
+# Ignore .env file
+.env
+
+# Ignore checkpoint file
+data/checkpoint.txt
+
+# Ignore Git files
+.gitattributes
+
+# Ignore Python cache and compiled files
+__pycache__/*
+*.pyc
+*.pyo
+*.pyd
+
+# Ignore IDE and editor specific files
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+*.swo
+*.swp
+*~.nfs*
+*.bak
+
+# Ignore system files
+.DS_Store
+Thumbs.db
