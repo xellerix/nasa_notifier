@@ -47,3 +47,12 @@
   If the API key, HEC endpoint, or HEC token are not found in the `.env` file, the program will prompt the user to enter them and they will be saved for future sessions.
 
   The application will poll the NASA API every 5 minutes. For each new event it finds, it will print the selected fields to the console and send the event to the Splunk HEC.
+
+*** Example Splunk Input:
+#+BEGIN_SRC sh
+[http://nasa]
+disabled = 0
+index = nasa
+token = <HEC TOKEN>
+#+END_SRC
+
